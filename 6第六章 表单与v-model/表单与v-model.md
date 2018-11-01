@@ -81,5 +81,36 @@
 </script>
 ```
 ### 选择列表
+```
+<div id="app">
+	<select v-model="selected" multiple>
+		<option v-for="option in options" :value="option.value">{{options.text}}</option>
+		<!-- v-model会有限匹配option中的value的值，如果没有，则匹配标签中的text -->
+	</select>
+</div>
+<script type="text/javascript">
+	var app = new Vue({
+		el:"#app",
+		data:{
+			selected:["html","css"], // 如果select中指定了multiple则是数组，否则是字符串
+			options:[
+				{
+					value:"html",
+					title:"超文本标记语言"
+				},
+				{
+					value:"css",
+					title:"层叠样式表"
+				},
+				{
+					value:"JavaScript",
+					title:"JS"
+				}
+			]
+		}	
+	});
+</script>
+```
+如果使用的是汉字输入，那么在输入拼音的这个阶段，是不会更新`v-model`的，如果想随时更新，可以借助`@input`事件。
 ## 6.2 绑定值
 ## 6.3 修饰符
