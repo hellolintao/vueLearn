@@ -144,6 +144,38 @@ var app = new Vue({
 </script>
 ```
 
-以上当checkbox选中的时候，`app.checked === app.book`，都是`js`
+以上当checkbox选中的时候，`app.checked === app.book`，都是`js`。
+
+```html
+<div id="app">
+	<input type="checkbox" v-model="checked" :true-value="value1" :false-value="value2"/>
+</div>
+<script>
+	var app = new Vue({
+		el:"#app",
+		data:{
+			checked:false,
+			value1:"a",
+			value1:"b"
+		}
+	});
+</script>
+```
+
+以上，当checkbox选中的时候`app.checked === app.value1`，未选中时，`app.checked === app.value2`
 
 ## 6.3 修饰符
+
+与事件类似，`v-model`也有很多的修饰符。
+
+### .lazy
+
+使用该修饰符`<input v-model.lazy="value1">`，该值不是实时更新的，只有元素失焦或者按下回车时才会更新
+
+### .number
+
+使用该修饰符`<input v-model.number="value1">`，可以把用户输入的值转成Number类型。
+
+### .trim
+
+`<input v-model.trim="value1">`，可以去掉输入的首尾空格。
