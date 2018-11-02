@@ -1,26 +1,33 @@
 # 表单与`v-model`
+
 ## 6.1 基本用法
+
 ### 文本输入框
-```
+
+```html
+
 <div id="app">
-	<input type="text" v-model="message"/>
-	<h2>{{ message }}</h2>
+    <input type="text" v-model="message"/>
+    <h2>{{ message }}</h2>
 </div>
 <script>
-	var app = new Vue({
-		el:"#app",
-		data:{
-			message:""
-		}
-	});
-	// 此时，实例中的message和input标签中的message已经绑定了，一个数据更新，另外一个数据也会更新，同时，h2元素中的message也会及时更新。
+var app = new Vue({
+	el:"#app",
+    data:{
+		message:""
+	}
+});
+// 此时，实例中的message和input标签中的message已经绑定了，一个数据更新，另外一个数据也会更新，同时，h2元素中的message也会及时更新。
 </script>
+
 ```
+
 ### 单选按钮
-```
+
+```html
 <!-- 单选模式可以直接使用数据绑定 -->
 <div id="app">
-	<input type="radio" :checked="picked">
+    <input type="radio" :checked="picked">
 </div>
 <script type="text/javascript">
 	var app = new Vue({
@@ -48,8 +55,10 @@
 	});
 </script>
 ```
+
 ### 复选框
-```
+
+```html
 <!-- 可以单独使用 -->
 <div id="app">
 	<input type="checkbox" v-model="checked">
@@ -80,8 +89,10 @@
 	});
 </script>
 ```
+
 ### 选择列表
-```
+
+```html
 <div id="app">
 	<select v-model="selected" multiple>
 		<option v-for="option in options" :value="option.value">{{options.text}}</option>
@@ -111,6 +122,28 @@
 	});
 </script>
 ```
+
 如果使用的是汉字输入，那么在输入拼音的这个阶段，是不会更新`v-model`的，如果想随时更新，可以借助`@input`事件。
+
 ## 6.2 绑定值
+
+使用`v-model`进行数据绑定之后，我们还可以对表单进行值的绑定，当可选中表单处于选中状态时，`value`和`v-model`同时更新，例如：
+
+```html
+<div id="app">
+	<input type="checkbox" v-model="checked" :value="book"/>
+</div>
+<script>
+	var app = new Vue({
+		el:"#app",
+		data:{
+			checked:false,
+			book:"js"
+		}
+	});
+</script>
+```
+
+以上当checkbox选中的时候，`app.checked === app.book`，都是`js`
+
 ## 6.3 修饰符
