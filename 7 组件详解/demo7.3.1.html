@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Demo7.3.1</title>
+</head>
+<body>
+    <div id="app">
+        <my-component @hello="helloFun"></my-component>
+    </div>
+    <script src="../src/vue.min.js"></script>
+    <script>
+        Vue.component(`my-component`,{
+            template:"<div @click='helloFun()'>hello</div>",
+            methods:{
+                helloFun: function() {
+                    console.log(`子组件的hello事件触发`);
+                    this.$emit(`hello`);
+                }
+            }
+        });
+        var app = new Vue({
+            el:"#app",
+            methods:{
+                helloFun: function(){
+                    console.log(`父组件hello事件被触发`);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
