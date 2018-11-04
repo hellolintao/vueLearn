@@ -8,27 +8,32 @@
 </head>
 <body>
     <div id="app">
-        <my-component @hello="helloFun"></my-component>
-    </div>
+        <my-component v-model="parentData"></my-component>
+    </app>
     <script src="../src/vue.min.js"></script>
-    <script>
-        Vue.component(`my-component`,{
-            template:"<div @click='helloFun()'>hello</div>",
-            methods:{
-                helloFun: function() {
-                    console.log(`子组件的hello事件触发`);
-                    this.$emit(`hello`);
-                }
+<script>
+    Vue.component("my-component", {
+        template: "<div @click='handleClick'>子组件信息</div>",
+        data: function () {
+            return {
+                childData: "子组件数据"
             }
-        });
-        var app = new Vue({
-            el:"#app",
-            methods:{
-                helloFun: function(){
-                    console.log(`父组件hello事件被触发`);
-                }
+        },
+        methods: {
+            handleClick: function () {
+                console.log("子组件的按钮被点击");
+                console.log("子组件的数据是："+this.childData);
+                this.$emit("input", this.childData);
+                console.log()
             }
-        });
-    </script>
+        }
+    });
+    var app = new Vue({
+        el: "#app",
+        data: {
+            parentData: ""
+        }
+    });
+</script>
 </body>
 </html>
