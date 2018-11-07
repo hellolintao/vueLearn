@@ -7,29 +7,29 @@
     <title>Demo</title>
 </head>
 <body>
-    <div id="app">
-        <div class="static" :class="{ 'error':isError, 'active': isActive }"></div>
-        <div :class="classes"></div>
-    </div>
-    <script src="../src/vue.min.js"></script>
-    <script>
-        var app = new Vue({
-            el:"#app",
-            data:{
-                isError:true,
-                isActive:false,
-                isWarn:true
-            },
-            computed:{
-                classes: function () {
-                    return {
-                        static:true,
-                        active: this.isActive,
-                        "warn": this.isWarn 
-                    }
+<div id="app">
+    <div class="static" :class="{ 'error':isError, 'active': isActive }"></div>
+    <div :class="classes"></div>
+</div>
+<script src="../src/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            isError:true,
+            isActive:false,
+            isWarn:true
+        },
+        computed:{
+            classes: function () {
+                return {
+                    static:true,
+                    active: this.isActive,
+                    "warn": this.isWarn 
                 }
             }
-        });
-    </script>
+        }
+    });
+</script>
 </body>
 </html>
