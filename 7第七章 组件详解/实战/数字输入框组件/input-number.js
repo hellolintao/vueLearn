@@ -1,6 +1,11 @@
 Vue.component('input-number',{
-    template:"",
+    template:"<div class='input-number'><input/><button>+</button><button>-</button></div>",
     data:function(){
+        return {
+
+        }
+    },
+    props:{
 
     },
     methods:{
@@ -10,6 +15,6 @@ Vue.component('input-number',{
 
     },
     mounted:function(){
-        
+
     }
 });
