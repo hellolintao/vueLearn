@@ -81,7 +81,7 @@ var app = new Vue({
 
 Vue中的文本插值类似于模板语法，类似于[Liquid](https://liquid.bootcss.com/),应该掌握该模板语法，因为很多项目都采用了这个语法，例如**jekyll**
 
-在Vue中，文本插值一般在html标签中，使用` {{ ** }} `来进行文本插值的操作，例如下面最基础的用法
+在Vue中，文本插值一般在html标签中，使用``来进行文本插值的操作，例如下面最基础的用法
 
 ```html
 <div id="add">
